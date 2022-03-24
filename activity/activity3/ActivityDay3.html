@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            KFCC Cricket Club
+        </title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <script type="text/javascript">
+            function validateForm()
+            {
+                var teamname1 = document.forms["myForm"]["teamname1"].value;
+                var score1 = document.forms["myForm"]["score1"].value;
+                var teamname2 = document.forms["myForm"]["teamname2"].value;
+                var score2 = document.forms["myForm"]["score2"].value;
+                if (teamname1 == "") {
+                    alert("Fill The Fields Required");
+                }
+                else if (score1 == "") {
+                    alert("Fill The Fields Required");
+                }
+                else if (teamname2 == "") {
+                    alert("Fill The Fields Required");
+                }
+                else if (score2 == "") {
+                    alert("Fill The Fields Required");
+                }
+                else
+                {
+                    showresult();
+                }
+            }
+
+            function showresult()
+            {
+
+                var teamname1 = document.getElementById("teamname1").value;
+
+                var score1 = document.getElementById("score1").value;
+
+                var teamname2 = document.getElementById("teamname2").value;
+
+                var score2 = document.getElementById("score2").value;
+
+                if (teamname1 == teamname2) {
+                    alert("Invalid Input - Team Names Can't be Same!");
+                }
+
+                //splitting and converting to int
+                var runandwicket1 = score1.split("/");
+                var run1 = parseInt(runandwicket1[0]);
+                var wicket1 = parseInt(runandwicket1[1]);
+
+                var runandwicket2 = score2.split("/");
+                var run2 = parseInt(runandwicket2[0]);
+                var wicket2 = parseInt(runandwicket2[1]);
+
+                if (run1 > 999 || score1 > 10 || run2 > 999 || score2 > 10 || run1 < 1 || score1 < 1 || run2 < 1 || score2 < 1) {
+                    alert("Invalid Score Entered!");
+                }
+
+                if (run1 > run2) {
+                    if (run1 > run2 + 7) {
+                        alert("Invalid Score!");
+                    }
+                    var result = teamname1 + " Won By " + (run1 - run2) + " Runs.";
+                }
+                if (run2 > run1) {
+                    if (run2 > run1 + 7) {
+                        alert("Invalid Score!");
+                    }
+                    var result = teamname2 + " Won By " + (10 - wicket2) + " Wickets.";
+                }
+
+                var element = document.getElementById("resulttext");
+                element.innerHTML = "MATCH RESULT";
+                var element1 = document.getElementById("showresult");
+                element1.innerHTML = result;
+                alert("Result:  "+ result);
+            }
+
+            function onlyalphabets() {
+                var teamname = document.getElementById("teamname1").value;
+                var pattern = /[0-9]+/gm;
+                if (pattern.test(teamname)) {
+                    alert('Only Alphabets Allowed For Team Name');
+                    document.getElementById("teamname1").value = "";
+                }
+            }
+            function onlyalphabets1() {
+                var teamname = document.getElementById("teamname2").value;
+                var pattern = /[0-9]+/gm;
+                if (pattern.test(teamname)) {
+                    alert('Only Alphabets Allowed For Team Name');
+                    document.getElementById("teamname2").value = "";
+                }
+            }
+
+
+        </script>
+    </head>
+    <body>
+        <br><br>
+        <center><h2>Winner Selection</h2></center>
+        <form name="myForm" style="align-items: flex-start;" class="row g-4">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <label class="form-label">Enter The Team Name 1<sup>*</sup></label>
+                <input type="text" class="form-control" id="teamname1" onkeyup="onlyalphabets()" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Score 1<sup>*</sup></label>
+                <input type="text" class="form-control" id="score1" required>
+            </div>
+            <div class="col-md-2"></div>
+            
+
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <label class="form-label">Enter The Team Name 2<sup>*</sup></label>
+                <input type="text" class="form-control" id="teamname2" onkeyup="onlyalphabets1()" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Score 2<sup>*</sup></label>
+                <input type="text" class="form-control" id="score2" required>
+            </div>
+            <div class="col-md-2"></div>
+
+
+            <div class="col-md-3"></div>
+            <div class="col-6">
+                <center><input type="submit" value="Get Result" class="btn btn-primary" onclick="validateForm()"></center>
+            </div>
+            <div class="col-md-3"></div>
+        </form>
+        <center>
+        <div>
+        <p id="resulttext"></p>
+        <p id="showresult" style="color: green; font-size: 32px;"></p>
+        </div>
+        </center>
+
+    </body>
+</html>
