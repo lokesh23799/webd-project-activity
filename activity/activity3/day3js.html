@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DAY 3 JS</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <style>
+
+    </style>
+    <script>
+        console.log(10);
+    </script>
+</head>
+
+<body>
+    <!--Contents-->
+    <p id="mypara"></p>
+    <script>
+        document.getElementById("mypara").innerHTML = "Welcome";
+        alert("Welcome To Javascript Training...");
+
+        function submitted()
+        {
+            return alert("Form Submitted Successfully");
+        }
+
+        var array=[10,20,30,40,50];
+        console.log(array);
+
+    </script>
+
+    <form>
+        Username: <input type="text" name="uname" required>
+        Password: <input type="password" name="pass" required>
+        <input type="submit" onclick="submitted()">
+    </form>
+</body>
+
+</html>
