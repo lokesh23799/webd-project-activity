@@ -132,7 +132,7 @@ public ModelAndView m6(HttpServletRequest req) {
 	List<Ticket> li = tb.findAll();
 	int bookedSeat=0;
 	
-	for(Ticket t2:li) {
+	for(Ticket t2:li) { 
 		if(t2.getShowdate().equals(t1.getShowdate())) {
 			if(t2.getShowtime().equals(t1.getShowtime())) {
 				bookedSeat=bookedSeat+t2.getNooftickets();

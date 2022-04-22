@@ -62,12 +62,37 @@ public class playerprojectcontroller {
 			m.addAttribute("player",li);
 			return new ModelAndView("viewplayer");
 		}
+		
 		@RequestMapping("updateplayer")
-		public ModelAndView m6(HttpServletRequest req) {
+		public ModelAndView m9(HttpServletRequest req,Model model) {
 			int no=Integer.parseInt(req.getParameter("id"));
 			System.out.println(no);
-			player p1=pb.getById(no);
+			
+			player p=pb.getById(no);
+			model.addAttribute("player", p);
 			return new ModelAndView("updateplayer");
+		}
+		
+		@RequestMapping(value="update-player",method=RequestMethod.POST)
+		public ModelAndView m6(HttpServletRequest req) {
+			int noo=Integer.parseInt(req.getParameter("pid"));
+			String pname=req.getParameter("pname");
+			int runs=Integer.parseInt(req.getParameter("runs"));
+			String skill=req.getParameter("skill");
+			int teamid=Integer.parseInt(req.getParameter("teamid"));
+			
+			player p=new player(noo,pname,runs,skill, teamid);
+			
+			//Application context
+			pb.save(p);
+			return new ModelAndView("success");
+			}
+		@RequestMapping("deleteplayer")
+		public ModelAndView m7(HttpServletRequest req) {
+			
+			int num = Integer.parseInt(req.getParameter("id"));
+			pb.deleteById(num);
+			return new ModelAndView("deleteplayer");
 		}
 	}
 

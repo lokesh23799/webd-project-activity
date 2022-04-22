@@ -1,4 +1,4 @@
-package com.ltts.playerproj.playerproj;
+package com.ltts.playerproj;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
